@@ -1,0 +1,24 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Quick Fix documentation",
+        "description": "This is the API documentation for my application.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/iyzico-3d": {
+            "get": {
+                "summary": "Get user information",
+                "operationId": "0fc0661e8c0d5692923734e1fa8962cb",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    }
+}

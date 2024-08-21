@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev": "concurrently \"php QuickFixBackend/artisan serve\" \"npm start --prefix QuickFixDashboard\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
