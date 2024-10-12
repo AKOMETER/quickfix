@@ -48,9 +48,9 @@ const ShopFormData = ({
   );
   const { defaultCurrency } = useSelector(
     (state) => state.currency,
-    shallowEqual,
+    shallowEqual
   );
-  console.log('defaultCurrency', defaultCurrency);
+
   const [value, setValue] = useState('');
 
   async function fetchUserList(search) {

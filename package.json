@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "concurrently \"php QuickFixBackend/artisan serve\" \"npm start --prefix QuickFixDashboard\""
+    "dev": "concurrently \"php QuickFixBackend/artisan serve\" \"npm start --port=3001 --prefix QuickFixDashboard\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

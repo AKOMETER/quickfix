@@ -98,7 +98,8 @@ export default function CountryForm({ visible, setVisible, id, setId }) {
   }
 
   const fetchRegion = ({ search, page }) => {
-    return regionService.get({ search, page, has_price: true }).then((res) => {
+    //has_price: true
+    return regionService.get({ search, page }).then((res) => {
       return res.data.map((region) => ({
         label: region?.translation?.title,
         value: region.id,

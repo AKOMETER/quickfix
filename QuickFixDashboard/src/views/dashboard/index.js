@@ -38,7 +38,7 @@ export default function Dashboard() {
   const { user } = useSelector((state) => state.auth, shallowEqual);
   const { loading } = useSelector(
     (state) => state.statisticsCount,
-    shallowEqual,
+    shallowEqual
   );
 
   function getDashboardsByRole() {

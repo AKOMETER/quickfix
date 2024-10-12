@@ -19,7 +19,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
   const { activeMenu } = useSelector((state) => state.menu, shallowEqual);
   const { settings } = useSelector(
     (state) => state.globalSettings,
-    shallowEqual,
+    shallowEqual
   );
 
   const [location, setLocation] = useState(
@@ -28,15 +28,15 @@ const ShopMain = ({ next, action_type = '', user }) => {
           lat: parseFloat(activeMenu?.data?.lat_long?.latitude),
           lng: parseFloat(activeMenu?.data?.lat_long?.longitude),
         }
-      : getDefaultLocation(settings),
+      : getDefaultLocation(settings)
   );
 
   const [loadingBtn, setLoadingBtn] = useState(false);
   const [logoImage, setLogoImage] = useState(
-    activeMenu.data?.logo_img ? [activeMenu.data?.logo_img] : [],
+    activeMenu.data?.logo_img ? [activeMenu.data?.logo_img] : []
   );
   const [backImage, setBackImage] = useState(
-    activeMenu.data?.background_img ? [activeMenu.data?.background_img] : [],
+    activeMenu.data?.background_img ? [activeMenu.data?.background_img] : []
   );
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
       data.open_time = JSON.stringify(data?.open_time);
       data.close_time = JSON.stringify(data?.close_time);
       dispatch(
-        setMenuData({ activeMenu, data: { ...activeMenu.data, ...data } }),
+        setMenuData({ activeMenu, data: { ...activeMenu.data, ...data } })
       );
     };
   }, []);
@@ -90,11 +90,11 @@ const ShopMain = ({ next, action_type = '', user }) => {
             name: t('add.shop'),
             data: { ...values, id: data?.id, seller: data?.seller },
             refetch: false,
-          }),
+          })
         );
         navigate(`/shop/${data.uuid}?step=1`);
       })
-      .catch((err) => console.error(err.response.data.params))
+      .catch((err) => console.error(err))
       .finally(() => setLoadingBtn(false));
   }
 
@@ -106,7 +106,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
           setMenuData({
             activeMenu,
             data: values,
-          }),
+          })
         );
         next();
       })
@@ -146,6 +146,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
           location={location}
           setLocation={setLocation}
         />
+
         <Space>
           <Button type='primary' htmlType='submit' loading={loadingBtn}>
             {t('next')}

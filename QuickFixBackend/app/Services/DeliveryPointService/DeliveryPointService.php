@@ -24,10 +24,12 @@ class DeliveryPointService extends CoreService
      */
     public function create(array $data): array
     {
-        try {
+        try
+        {
             $model = DeliveryPoint::create($data);
 
-            if (data_get($data, 'images.0')) {
+            if (data_get($data, 'images.0'))
+            {
 
                 $model->update([
                     'img' => data_get($data, 'images.0')
@@ -40,17 +42,17 @@ class DeliveryPointService extends CoreService
             $this->setTranslations($model, $data);
 
             return [
-                'status'  => true,
+                'status' => true,
                 'message' => ResponseError::NO_ERROR,
-                'data'    => $model,
+                'data' => $model,
             ];
-        } catch (Throwable $e) {
+        } catch (Throwable $e)
+        {
 
             $this->error($e);
-
             return [
-                'status'  => false,
-                'code'    => ResponseError::ERROR_501,
+                'status' => false,
+                'code' => ResponseError::ERROR_501,
                 'message' => __('errors.' . ResponseError::ERROR_501, locale: $this->language),
             ];
         }
@@ -58,13 +60,15 @@ class DeliveryPointService extends CoreService
 
     public function update(DeliveryPoint $deliveryPoint, array $data): array
     {
-        try {
+        try
+        {
             $data['city_id'] = data_get($data, 'city_id');
             $data['area_id'] = data_get($data, 'area_id');
 
             $deliveryPoint->update($data);
 
-            if (data_get($data, 'images.0')) {
+            if (data_get($data, 'images.0'))
+            {
 
                 $deliveryPoint->galleries()->delete();
 
@@ -79,18 +83,19 @@ class DeliveryPointService extends CoreService
             $this->setTranslations($deliveryPoint, $data);
 
             return [
-                'status'  => true,
+                'status' => true,
                 'message' => ResponseError::NO_ERROR,
-                'data'    => $deliveryPoint,
+                'data' => $deliveryPoint,
             ];
 
-        } catch (Throwable $e) {
+        } catch (Throwable $e)
+        {
 
             $this->error($e);
 
             return [
-                'status'  => false,
-                'code'    => ResponseError::ERROR_502,
+                'status' => false,
+                'code' => ResponseError::ERROR_502,
                 'message' => __('errors.' . ResponseError::ERROR_502, locale: $this->language)
             ];
         }
@@ -98,7 +103,8 @@ class DeliveryPointService extends CoreService
 
     public function changeActive(int $id): array
     {
-        try {
+        try
+        {
             $model = DeliveryPoint::find($id);
 
             $model->update([
@@ -106,27 +112,30 @@ class DeliveryPointService extends CoreService
             ]);
 
             return [
-                'status'  => true,
+                'status' => true,
                 'message' => ResponseError::NO_ERROR,
             ];
 
-        } catch (Throwable $e) {
+        } catch (Throwable $e)
+        {
 
             $this->error($e);
 
             return [
-                'status'  => false,
-                'code'    => ResponseError::ERROR_502,
+                'status' => false,
+                'code' => ResponseError::ERROR_502,
                 'message' => __('errors.' . ResponseError::ERROR_502, locale: $this->language)
             ];
         }
     }
 
-    public function delete(?array $ids = []) {
+    public function delete(?array $ids = [])
+    {
 
         $models = DeliveryPoint::find(is_array($ids) ? $ids : []);
 
-        foreach ($models as $model) {
+        foreach ($models as $model)
+        {
             $model->workingDays()->delete();
             $model->closedDates()->delete();
             $model->galleries()->delete();

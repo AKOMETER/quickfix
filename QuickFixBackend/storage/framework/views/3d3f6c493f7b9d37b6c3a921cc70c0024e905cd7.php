@@ -76,4 +76,4 @@
 </script>
 </body>
 </html>
-<?php /**PATH C:\Users\Ikechukwu Boniface\Documents\QuickFixBackend\resources\views/vendor/l5-swagger/index.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/mac/Documents/softwares/work/QuickFix/QuickFixBackend/vendor/darkaonline/l5-swagger/resources/views/index.blade.php ENDPATH**/ ?>

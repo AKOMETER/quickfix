@@ -67,9 +67,11 @@ class ShopController extends AdminBaseController
      */
     public function store(StoreRequest $request): JsonResponse
     {
+
         $result = $this->service->create($request->all());
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -90,7 +92,8 @@ class ShopController extends AdminBaseController
     {
         $shop = $this->repository->shopDetails($uuid, $request->all());
 
-        if (empty($shop)) {
+        if (empty($shop))
+        {
             return $this->onErrorResponse(['code' => ResponseError::ERROR_404]);
         }
 
@@ -114,7 +117,8 @@ class ShopController extends AdminBaseController
     {
         $result = $this->service->update($uuid, $request->all());
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -191,7 +195,8 @@ class ShopController extends AdminBaseController
     {
         $result = $this->service->imageDelete($uuid, $request->validated());
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -212,7 +217,8 @@ class ShopController extends AdminBaseController
     {
         $result = (new ShopActivityService)->changeStatus($uuid, $request->input('status'));
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -226,25 +232,29 @@ class ShopController extends AdminBaseController
     {
         $fileName = 'export/shops.xlsx';
 
-        try {
+        try
+        {
             Excel::store(new ShopExport, $fileName, 'public', \Maatwebsite\Excel\Excel::XLSX);
 
             return $this->successResponse('Successfully exported', [
                 'path' => 'public/export',
                 'file_name' => $fileName
             ]);
-        } catch (Throwable) {
+        } catch (Throwable)
+        {
             return $this->errorResponse('Error during export');
         }
     }
 
     public function fileImport(FilterParamsRequest $request): JsonResponse
     {
-        try {
+        try
+        {
             Excel::import(new ShopImport, $request->file('file'));
 
             return $this->successResponse('Successfully imported');
-        } catch (Throwable $e) {
+        } catch (Throwable $e)
+        {
             $this->error($e);
             return $this->errorResponse(
                 ResponseError::ERROR_508,
@@ -263,7 +273,8 @@ class ShopController extends AdminBaseController
     {
         $result = $this->service->updateVerify($uuid);
 
-        if (!$result['status']) {
+        if (!$result['status'])
+        {
             return $this->onErrorResponse($result);
         }
 

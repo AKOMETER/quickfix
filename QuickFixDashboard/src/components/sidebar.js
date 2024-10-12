@@ -36,11 +36,11 @@ const Sidebar = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { system_refund, payment_type } = useSelector(
     (state) => state.globalSettings.settings,
-    shallowEqual,
+    shallowEqual
   );
   const { navCollapsed } = useSelector(
     (state) => state.theme.theme,
-    shallowEqual,
+    shallowEqual
   );
   const { languages } = useSelector((state) => state.formLang, shallowEqual);
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const Sidebar = () => {
   const { theme } = useSelector((state) => state.theme, shallowEqual);
   const parcelMode = useMemo(
     () => !!theme.parcelMode && user?.role === 'admin',
-    [theme, user],
+    [theme, user]
   );
   const routes = useMemo(() => filterUserRoutes(user.urls), [user]);
   const active = routes?.find((item) => pathname.includes(item.url));
@@ -141,7 +141,7 @@ const Sidebar = () => {
       ? optionList.filter((input) =>
           t(input?.name ?? '')
             .toUpperCase()
-            .includes(searchTerm.toUpperCase()),
+            .includes(searchTerm.toUpperCase())
         )
       : data;
 
@@ -162,7 +162,6 @@ const Sidebar = () => {
             <ThemeConfigurator />
           </div>
         )}
-
         {!navCollapsed ? (
           <Space className='mx-4 mt-2 d-flex justify-content-between'>
             <span className='icon-button' onClick={() => setLangModal(true)}>
@@ -187,7 +186,6 @@ const Sidebar = () => {
           </div>
         )}
         <Divider style={{ margin: '10px 0' }} />
-
         {!navCollapsed && (
           <span className='mt-2 mb-2 d-flex justify-content-center'>
             <Input
@@ -201,7 +199,6 @@ const Sidebar = () => {
             />
           </span>
         )}
-
         <Scrollbars
           autoHeight
           autoHeightMin={window.innerHeight > 969 ? '80vh' : '77vh'}
@@ -258,7 +255,7 @@ const Sidebar = () => {
                           <span>{t(submenu.name)}</span>
                         </Link>
                       </Menu.Item>
-                    ),
+                    )
                   )}
                 </SubMenu>
               ) : (
@@ -267,19 +264,17 @@ const Sidebar = () => {
                     <span>{t(item.name)}</span>
                   </Link>
                 </Menu.Item>
-              ),
+              )
             )}
           </Menu>
         </Scrollbars>
       </Sider>
-
       {langModal && (
         <LangModal
           visible={langModal}
           handleCancel={() => setLangModal(false)}
         />
       )}
-
       <Modal
         visible={isModalVisible}
         onOk={handleOk}

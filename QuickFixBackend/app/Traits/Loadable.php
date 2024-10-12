@@ -18,21 +18,22 @@ trait Loadable
 {
     public function uploads($files): void
     {
-        foreach ($files as $key => $file) {
+        foreach ($files as $key => $file)
+        {
 
-            $file   = str_replace(config('app.img_host'), '', $file);
+            $file = str_replace(config('app.img_host'), '', $file);
 
-            $title  = Str::of($file)->after('/');
+            $title = Str::of($file)->after('/');
             $keys = explode('/', $file);
 
             $type = collect(array_intersect($keys, Gallery::TYPES))->first() ?? 'other';
 
-            $image          = new Gallery();
-            $image->title   = $title;
-            $image->path    = config('app.img_host') . $file;
-            $image->type    = $type;
-            $image->size    = data_get($file, 'size');
-            $image->mime    = data_get($file, 'mimeType');
+            $image = new Gallery();
+            $image->title = $title;
+            $image->path = config('app.img_host') . $file;
+            $image->type = $type;
+            $image->size = data_get($file, 'size');
+            $image->mime = data_get($file, 'mimeType');
             $image->preview = request("previews.$key");
 
             $this->galleries()->save($image);

@@ -21,6 +21,7 @@ export const InfiniteSelect = ({
       setFetching(true);
       fetchOptions({ search: value })
         .then((newOptions) => {
+          console.log(newOptions);
           setOptions(newOptions);
           setCurrentPage(2);
           setFetching(false);

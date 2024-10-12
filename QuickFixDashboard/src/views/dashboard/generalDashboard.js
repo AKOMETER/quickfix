@@ -25,12 +25,12 @@ export default function GeneralDashboard({ isSeller }) {
   const { user } = useSelector((state) => state.auth, shallowEqual);
   const { counts } = useSelector(
     (state) => state.statisticsCount,
-    shallowEqual,
+    shallowEqual
   );
   const { theme } = useSelector((state) => state.theme, shallowEqual);
   const parcelMode = useMemo(
     () => !!theme.parcelMode && user?.role === 'admin',
-    [theme, user],
+    [theme, user]
   );
 
   const goToOrder = (url, name) => {
@@ -51,6 +51,7 @@ export default function GeneralDashboard({ isSeller }) {
   return (
     <div>
       <TopBar />
+
       {!parcelMode ? (
         <>
           <Row gutter={16} className='mt-3'>
@@ -78,7 +79,7 @@ export default function GeneralDashboard({ isSeller }) {
                     user?.role === 'seller'
                       ? 'seller/orders?status=new'
                       : 'orders?status=new',
-                    t('in.progress.orders'),
+                    t('in.progress.orders')
                   )
                 }
               />
@@ -93,7 +94,7 @@ export default function GeneralDashboard({ isSeller }) {
                     user?.role === 'seller'
                       ? 'seller/orders?status=canceled'
                       : 'orders?status=canceled',
-                    t('cancelled.orders'),
+                    t('cancelled.orders')
                   )
                 }
               />
@@ -108,7 +109,7 @@ export default function GeneralDashboard({ isSeller }) {
                     user?.role === 'seller'
                       ? 'seller/orders?status=delivered'
                       : 'orders?status=delivered',
-                    t('delivered.orders'),
+                    t('delivered.orders')
                   )
                 }
               />
@@ -135,7 +136,7 @@ export default function GeneralDashboard({ isSeller }) {
                     user?.role === 'seller'
                       ? 'seller/products'
                       : 'catalog/products',
-                    t('products'),
+                    t('products')
                   )
                 }
               />

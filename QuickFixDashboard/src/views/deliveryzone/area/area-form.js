@@ -92,7 +92,8 @@ export default function AreaForm({ visible, setVisible, id, setId }) {
   }
 
   const fetchCountry = ({ search, page }) => {
-    return countryService.get({ search, page, has_price: true }).then((res) => {
+    // has_price: true
+    return countryService.get({ search, page }).then((res) => {
       return res.data.map((country) => ({
         label: country?.translation?.title,
         value: country.id,
@@ -100,7 +101,8 @@ export default function AreaForm({ visible, setVisible, id, setId }) {
     });
   };
   const fetchRegion = ({ search, page }) => {
-    return regionService.get({ search, page, has_price: true }).then((res) => {
+    // has_price: true
+    return regionService.get({ search, page }).then((res) => {
       return res.data.map((region) => ({
         label: region?.translation?.title,
         value: region.id,
@@ -108,7 +110,8 @@ export default function AreaForm({ visible, setVisible, id, setId }) {
     });
   };
   const fetchCity = ({ search, page }) => {
-    return cityService.get({ search, page, has_price: true }).then((res) => {
+    // has_price: true
+    return cityService.get({ search, page }).then((res) => {
       return res.data.map((city) => ({
         label: city?.translation?.title,
         value: city.id,
@@ -150,7 +153,7 @@ export default function AreaForm({ visible, setVisible, id, setId }) {
       onOk={handleClose}
       footer={null}
       loading={loading}
-      title={t('add.country')}
+      title={t('add.area')}
     >
       <Form
         form={form}

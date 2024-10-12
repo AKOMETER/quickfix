@@ -1,0 +1,1 @@
+<?php echo base64_decode($result); ?><?php /**PATH /Users/mac/Documents/softwares/work/QuickFix/QuickFixBackend/resources/views/iyzico.blade.php ENDPATH**/ ?>

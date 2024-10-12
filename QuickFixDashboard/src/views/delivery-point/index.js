@@ -31,11 +31,11 @@ const DeliveryPoints = () => {
   const { defaultLang } = useSelector((state) => state.formLang, shallowEqual);
   const { deliveryPoints, meta, loading, params } = useSelector(
     (state) => state.deliveryPoint,
-    shallowEqual,
+    shallowEqual
   );
   const { defaultCurrency } = useSelector(
     (state) => state.currency,
-    shallowEqual,
+    shallowEqual
   );
   const [id, setId] = useState(null);
   const data = activeMenu.data;
@@ -59,7 +59,7 @@ const DeliveryPoints = () => {
       render: (img, row) => {
         return (
           <Image
-            src={IMG_URL + img}
+            src={process.env.REACT_APP_BASE_URL + '/' + IMG_URL + img}
             alt='img_gallery'
             width={100}
             className='rounded'
@@ -127,7 +127,7 @@ const DeliveryPoints = () => {
         numberToPrice(
           price,
           defaultCurrency?.symbol,
-          defaultCurrency?.position,
+          defaultCurrency?.position
         ),
     },
 
@@ -161,7 +161,7 @@ const DeliveryPoints = () => {
         id: 'delivery-point/add',
         url: 'delivery-point/add',
         name: t('add.delivery.point'),
-      }),
+      })
     );
     navigate('/delivery-point/add');
   };
@@ -172,7 +172,7 @@ const DeliveryPoints = () => {
         url: `delivery-point/${row.id}`,
         id: 'point.edit',
         name: t('edit.delivery.point'),
-      }),
+      })
     );
     navigate(`/delivery-point/${row.id}`);
   };
@@ -184,7 +184,7 @@ const DeliveryPoints = () => {
         {},
         ...id.map((item, index) => ({
           [`ids[${index}]`]: item,
-        })),
+        }))
       ),
     };
     deliveryPointService
@@ -218,7 +218,7 @@ const DeliveryPoints = () => {
       setMenuData({
         activeMenu,
         data: { ...activeMenu.data, perPage, page, column, sort },
-      }),
+      })
     );
   }
 

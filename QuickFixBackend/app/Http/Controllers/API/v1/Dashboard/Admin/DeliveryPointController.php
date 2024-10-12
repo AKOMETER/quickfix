@@ -12,6 +12,7 @@ use App\Repositories\DeliveryPointRepository\DeliveryPointRepository;
 use App\Services\DeliveryPointService\DeliveryPointService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Log;
 
 class DeliveryPointController extends AdminBaseController
 {
@@ -57,8 +58,8 @@ class DeliveryPointController extends AdminBaseController
     public function store(StoreRequest $request): JsonResponse
     {
         $result = $this->service->create($request->validated());
-
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -79,7 +80,8 @@ class DeliveryPointController extends AdminBaseController
     {
         $result = $this->service->update($deliveryPoint, $request->validated());
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 
@@ -99,7 +101,8 @@ class DeliveryPointController extends AdminBaseController
     {
         $result = $this->service->changeActive($id);
 
-        if (!data_get($result, 'status')) {
+        if (!data_get($result, 'status'))
+        {
             return $this->onErrorResponse($result);
         }
 

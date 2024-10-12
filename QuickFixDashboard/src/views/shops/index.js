@@ -47,11 +47,11 @@ const Shops = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
   const { shops, meta, loading, params } = useSelector(
     (state) => state.shop,
-    shallowEqual,
+    shallowEqual
   );
   const { defaultCurrency } = useSelector(
     (state) => state.currency,
-    shallowEqual,
+    shallowEqual
   );
 
   const goToEdit = (row) => {
@@ -60,7 +60,7 @@ const Shops = () => {
         id: 'edit-shop',
         url: `shop/${row.uuid}`,
         name: t('edit.shop'),
-      }),
+      })
     );
     navigate(`/shop/${row.uuid}`, { state: 'edit' });
   };
@@ -71,7 +71,7 @@ const Shops = () => {
         id: 'shop-clone',
         url: `shop-clone/${row.uuid}`,
         name: t('shop.clone'),
-      }),
+      })
     );
     navigate(`/shop-clone/${row.uuid}`, { state: 'clone' });
   };
@@ -99,7 +99,11 @@ const Shops = () => {
         return (
           <Space>
             {row.locales?.map((item, index) => (
-              <Tag className='text-uppercase' color={[colors[index]]}>
+              <Tag
+                key={index}
+                className='text-uppercase'
+                color={[colors[index]]}
+              >
                 {item}
               </Tag>
             ))}
@@ -117,7 +121,7 @@ const Shops = () => {
           <Image
             alt={'images background'}
             className='img rounded'
-            src={img || 'https://via.placeholder.com/150'}
+            src={img ? img : 'https://via.placeholder.com/150'}
             effect='blur'
             width={50}
             height={50}
@@ -136,7 +140,11 @@ const Shops = () => {
           <Image
             alt={'images background'}
             className='img rounded'
-            src={img || 'https://via.placeholder.com/150'}
+            src={
+              img
+                ? process.env.REACT_APP_BASE_URL + '/' + img
+                : 'https://via.placeholder.com/150'
+            }
             effect='blur'
             width={50}
             height={50}
@@ -174,7 +182,7 @@ const Shops = () => {
         numberToPrice(
           tax || 0,
           defaultCurrency?.symbol,
-          defaultCurrency?.position,
+          defaultCurrency?.position
         ),
     },
     {
@@ -264,7 +272,7 @@ const Shops = () => {
         {},
         ...id.map((item, index) => ({
           [`ids[${index}]`]: item,
-        })),
+        }))
       ),
     };
     shopService
@@ -304,7 +312,7 @@ const Shops = () => {
       setMenuData({
         activeMenu,
         data: { ...activeMenu.data, perPage, page, column, sort },
-      }),
+      })
     );
   }
 
@@ -325,7 +333,7 @@ const Shops = () => {
         id: 'add-shop',
         url: `shop/add`,
         name: t('add.shop'),
-      }),
+      })
     );
     navigate(`/shop/add`);
   };
@@ -336,7 +344,7 @@ const Shops = () => {
       setMenuData({
         activeMenu,
         data: { ...data, ...items },
-      }),
+      })
     );
   };
 

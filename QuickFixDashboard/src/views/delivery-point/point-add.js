@@ -100,6 +100,7 @@ const AddDeliveryPoint = ({ next }) => {
   }
   async function fetchCountry(search) {
     const params = { search, status: 1, perPage: 10, region_id: region?.value };
+    console.log(params);
     return countryService.get(params).then(({ data }) =>
       data.map((item) => ({
         label: item.translation.title || 'no name',

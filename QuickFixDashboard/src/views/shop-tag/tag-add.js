@@ -36,6 +36,8 @@ const TagAdd = () => {
       images: image.map((image) => image.name),
       title: getTranslationFields(languages, values, 'title'),
     };
+
+    console.log(body);
     setLoadingBtn(true);
     const nextUrl = 'shop-tag';
     shopTagService

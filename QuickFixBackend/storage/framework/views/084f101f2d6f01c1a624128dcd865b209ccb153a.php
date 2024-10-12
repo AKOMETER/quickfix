@@ -47,4 +47,4 @@
         </div>
     </body>
 </html>
-<?php /**PATH C:\Users\Ikechukwu Boniface\Documents\QuickFixBackend\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/mac/Documents/softwares/work/QuickFix/QuickFixBackend/resources/views/welcome.blade.php ENDPATH**/ ?>
