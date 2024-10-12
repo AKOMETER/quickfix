@@ -59,7 +59,7 @@ const DeliveryPoints = () => {
       render: (img, row) => {
         return (
           <Image
-            src={process.env.REACT_APP_BASE_URL + '/' + IMG_URL + img}
+            src={IMG_URL + img}
             alt='img_gallery'
             width={100}
             className='rounded'
